@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Talk Color to Me",
+    "name": "Talk Color To Me",
     "slug": "colortalk",
     "privacy": "public",
     "sdkVersion": "35.0.0",
@@ -9,7 +9,7 @@
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -24,7 +24,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.booviuswizardry.colortalk"
+    },
+    "android": {
+      "package": "com.booviuswizardry.colortalk"
     }
   }
 }

@@ -1,21 +1,27 @@
 import React from "react";
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import Login from './src/login';
-import ColorWheel from './src/color-wheels';
+import { Provider } from "react-redux";
+import configureStore from "./src/state/store";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import Login from "./src/login";
+import ColorWheel from "./src/color-wheels";
 
 const AppNavigator = createStackNavigator(
   {
     Login,
-    ColorWheel,
+    ColorWheel
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: "Login"
   }
 );
 
 const AppContainer = createAppContainer(AppNavigator);
 
 export default function App() {
-  return <AppContainer />;
+  return (
+    <Provider store={configureStore()}>
+      <AppContainer />
+    </Provider>
+  );
 }

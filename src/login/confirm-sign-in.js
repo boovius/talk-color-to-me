@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
 import { StyleSheet, Text, TextInput, View, Button } from "react-native";
 import { Auth } from 'aws-amplify';
+import { authenticateUser } from '../state/actions/user';
 
 export default ({user, navigation}) => {
   const [authCode, setAuthCode] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
+  const dispatch = useDispatch();
 
   const confirmSignIn = () => {
     console.log('confirming user with user :', user);
@@ -12,6 +15,7 @@ export default ({user, navigation}) => {
       .then(user => {
         console.log('user received upon sign in confirmation: ', user)
         setErrorMessage(null);
+        dispatch(authenticateUser(user));
         navigation.navigate('ColorWheel');
       })
       .catch(err => {

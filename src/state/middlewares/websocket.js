@@ -13,6 +13,7 @@ const socketMiddleware = () => {
 
         socket = io(`http://localhost:9000/?username=${action.username}`);
 
+        console.log('socket: ', socket);
         // socket.on(CHAT_REQUEST, task => {
         // });
         break;

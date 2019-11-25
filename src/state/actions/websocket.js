@@ -1,7 +1,7 @@
 import { WS_CONNECT, WS_DISCONNECT, WS_EMIT_MESSAGE } from '../types/websocket';
 
-export const wsConnect = userId => {
-  return { type: WS_CONNECT, userId };
+export const wsConnect = username => {
+  return { type: WS_CONNECT, username };
 };
 export const wsDisonnect = () => {
   return { type: WS_DISCONNECT };

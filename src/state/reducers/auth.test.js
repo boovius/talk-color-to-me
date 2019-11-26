@@ -1,4 +1,4 @@
-import { LOGOUT_AUTHENTICATED_USER, AUTHENTICATE_USER } from '../types/user';
+import { LOGOUT_AUTHENTICATED_USER, AUTHENTICATE_USER } from '../types/auth';
 import reducer, { initialState } from './user';
 
 describe('state/reducers/user.test', () => {
@@ -6,7 +6,7 @@ describe('state/reducers/user.test', () => {
     it('sets fetching and user', () => {
       const fakeUser = {
         id: 123,
-        name: 'Ron the Runner',
+        username: 'Ron the Runner',
         phone: '123456789'
       };
 
@@ -30,7 +30,7 @@ describe('state/reducers/user.test', () => {
     it('resets authenticated user state', () => {
       const fakeUser = {
         id: 123,
-        name: 'Ron the Runner',
+        username: 'Ron the Runner',
         phone: '123456789'
       };
 

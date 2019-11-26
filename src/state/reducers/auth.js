@@ -1,11 +1,10 @@
-import { LOGOUT_AUTHENTICATED_USER, AUTHENTICATE_USER } from '../types/user';
+import { LOGOUT_AUTHENTICATED_USER, AUTHENTICATE_USER } from '../types/auth';
 
 export const initialState = {
   loggedIn: false,
   user: {
     id: '',
-    name: '',
-    role: '',
+    username: '',
     phone: ''
   }
 };

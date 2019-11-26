@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { StyleSheet, View, TextInput, Text, Button } from 'react-native';
-import { wsConnect } from './state/actions/websocket';
+import { wsConnect } from '../state/actions/websocket';
+import { authenticateUser } from '../state/actions/auth';
 import { connect } from 'react-redux';
 
 const SimpleLogin = ({navigation}) => {
@@ -11,7 +12,8 @@ const SimpleLogin = ({navigation}) => {
 
   const submitUsername = () => {
     console.log('dispatching ws connect event');
-    dispatch(wsConnect(username))
+    dispatch(authenticateUser({username}));
+    dispatch(wsConnect(username));
     navigation.navigate('UsersList');
   }
 

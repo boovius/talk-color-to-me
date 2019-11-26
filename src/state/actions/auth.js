@@ -1,4 +1,4 @@
-import { LOGOUT_AUTHENTICATED_USER, AUTHENTICATE_USER } from '../types/user';
+import { LOGOUT_AUTHENTICATED_USER, AUTHENTICATE_USER } from '../types/auth';
 
 export const authenticateUser = user => ({
   type: AUTHENTICATE_USER,

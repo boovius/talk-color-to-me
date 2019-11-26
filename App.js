@@ -5,11 +5,13 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import SimpleLogin from "./src/components/simple-login";
 import UsersList from "./src/components/users-list";
+import MyRoom from './src/components/my-room';
 
 const AppNavigator = createStackNavigator(
   {
     SimpleLogin,
-    UsersList
+    UsersList,
+    MyRoom
   },
   {
     initialRouteName: "SimpleLogin"

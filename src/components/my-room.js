@@ -3,7 +3,7 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 
 const hexRegex = new RegExp("[a,b,c,d,e,f,A,B,C,D,E,F,0-9]{6}");
 
-export default function App() {
+export default function MyRoom() {
   const [color, setColor] = useState("cfcfcf");
   const [wheelColor, setWheelColor] = useState("#cfcfcf");
   const [validationError, setValidationError] = useState(null);

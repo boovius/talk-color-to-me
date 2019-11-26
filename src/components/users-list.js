@@ -6,7 +6,9 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  FlatList
+  FlatList,
+  View,
+  Button
 } from "react-native";
 import { fetchMyCounterparts } from "../state/thunks/users";
 import Constants from 'expo-constants';
@@ -33,6 +35,9 @@ const UsersList = ({ navigation, user, users }) => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View>
+        <Button onPress={() => navigation.navigate('MyRoom')} title="My Room"/>
+      </View>
       <FlatList
         data={users.map(user => { return {key: user, name: user}})}
         renderItem={({item}) => <Row user={item} />}

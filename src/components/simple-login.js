@@ -13,7 +13,6 @@ const SimpleLogin = ({navigation}) => {
   const submitUsername = () => {
     console.log('dispatching ws connect event');
     dispatch(authenticateUser({username}));
-    dispatch(wsConnect(username));
     navigation.navigate('UsersList');
   }
 

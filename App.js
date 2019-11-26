@@ -6,12 +6,14 @@ import { createStackNavigator } from "react-navigation-stack";
 import SimpleLogin from "./src/components/simple-login";
 import UsersList from "./src/components/users-list";
 import MyRoom from './src/components/my-room';
+import Room from './src/components/room';
 
 const AppNavigator = createStackNavigator(
   {
     SimpleLogin,
     UsersList,
-    MyRoom
+    MyRoom,
+    Room
   },
   {
     initialRouteName: "SimpleLogin"

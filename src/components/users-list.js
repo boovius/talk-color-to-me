@@ -11,16 +11,13 @@ import {
   Button
 } from "react-native";
 import { fetchMyCounterparts } from "../state/thunks/users";
+import { setRoom } from "../state/actions/room";
 import Constants from 'expo-constants';
 
-const goToRoom = () => {
-  console.log("going to room");
-};
-
-const Row = ({ user }) => {
+const Row = ({ user, navigation, goToRoom }) => {
   console.log('row user: ', user);
   return (
-    <TouchableOpacity style={styles.userRow} onPress={goToRoom}>
+    <TouchableOpacity style={styles.userRow} onPress={() => goToRoom(user)}>
       <Text>{user.name}</Text>
     </TouchableOpacity>
   );
@@ -29,9 +26,14 @@ const Row = ({ user }) => {
 const UsersList = ({ navigation, user, users }) => {
   const dispatch = useDispatch();
 
+  const goToRoom = (user) => {
+    dispatch(setRoom(user.name));
+    navigation.navigate('Room', {room: user.name})
+  };
+
   useEffect(() => {
     dispatch(fetchMyCounterparts(user));
-  }, []);
+  }, [user]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -40,7 +42,7 @@ const UsersList = ({ navigation, user, users }) => {
       </View>
       <FlatList
         data={users.map(user => { return {key: user, name: user}})}
-        renderItem={({item}) => <Row user={item} />}
+        renderItem={({item}) => <Row navigation={navigation} user={item} goToRoom={goToRoom}/>}
         keyExtractor={user => user.key}
       />
     </SafeAreaView>

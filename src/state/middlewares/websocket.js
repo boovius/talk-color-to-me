@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import { WS_CONNECT, WS_DISCONNECT } from '../types/websocket';
+import { WS_CONNECT, WS_DISCONNECT, WS_SEND_DATA } from '../types/websocket';
 
 const socketMiddleware = () => {
   let socket;
@@ -14,8 +14,13 @@ const socketMiddleware = () => {
         socket = io(`http://localhost:9000/?username=${action.username}`);
 
         console.log('socket: ', socket);
-        // socket.on(CHAT_REQUEST, task => {
-        // });
+
+        socket.on(action.room, data => {
+          store.dispatch(updateOwnerData(data));
+        });
+        break;
+      case WS_SEND_DATA:
+        socket.emit(action.room, action.data);
         break;
       case WS_DISCONNECT:
         if (socket !== null) {

@@ -1,27 +1,27 @@
-import { GET_USERS_FAILED, GET_USERS_REQUESTED, GET_USERS_SUCCEEDED } from '../types/users';
+import { GET_ROOMS_FAILED, GET_ROOMS_REQUESTED, GET_ROOMS_SUCCEEDED } from '../types/rooms';
 
 export const initialState = {
   fetching: false,
   fetchError: null,
-  users: []
+  rooms: []
 };
 
 const reducer = (state = initialState, { type, payload } = {}) => {
   switch (type) {
-    case GET_USERS_REQUESTED:
+    case GET_ROOMS_REQUESTED:
       return {
         ...state,
         fetching: true
       };
 
-    case GET_USERS_SUCCEEDED:
+    case GET_ROOMS_SUCCEEDED:
       return {
         ...state,
         fetching: false,
-        users: payload
+        rooms: payload
       };
 
-    case GET_USERS_FAILED:
+    case GET_ROOMS_FAILED:
       return {
         ...state,
         fetching: false,

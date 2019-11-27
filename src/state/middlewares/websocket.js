@@ -11,7 +11,9 @@ const socketMiddleware = () => {
           break;
         }
 
-        socket = io(`http://localhost:9000/?username=${action.username}`);
+        console.log('ws connecting with action: ', action);
+
+        socket = io(`http://192.168.1.155:9000/?username=${action.username}&roomname=${action.roomname}`);
 
         console.log('socket: ', socket);
 
@@ -29,6 +31,8 @@ const socketMiddleware = () => {
         socket = null;
         break;
       default:
+        console.log('state: ', store.getState());
+        console.log('action: ', action);
         next(action);
     }
   };

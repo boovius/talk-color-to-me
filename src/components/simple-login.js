@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { StyleSheet, View, TextInput, Text, Button } from 'react-native';
-import { wsConnect } from '../state/actions/websocket';
+import { StyleSheet, View, TextInput, Button } from 'react-native';
 import { authenticateUser } from '../state/actions/auth';
 import { connect } from 'react-redux';
 
 const SimpleLogin = ({navigation}) => {
   const [username, setUsername] = useState('');
-  const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
 
-  const submitUsername = () => {
-    console.log('dispatching ws connect event');
+  const storeNameAndGoToRoomsList = () => {
     dispatch(authenticateUser({username}));
-    navigation.navigate('UsersList');
+    navigation.navigate('RoomsList');
   }
 
   return (
@@ -24,8 +21,7 @@ const SimpleLogin = ({navigation}) => {
         placeholder="username"
         style={styles.textInputs}
       />
-      <Button onPress={submitUsername} style={styles.button} title="Enter"/>
-      <Text>{errorMessage}</Text>
+      <Button onPress={storeNameAndGoToRoomsList} style={styles.button} title="Enter"/>
     </View>
   )
 }

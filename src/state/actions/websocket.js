@@ -1,7 +1,7 @@
 import { WS_CONNECT, WS_DISCONNECT, WS_EMIT_MESSAGE } from '../types/websocket';
 
-export const wsConnect = (username, room) => {
-  return { type: WS_CONNECT, username, room };
+export const wsConnect = (username, roomname) => {
+  return { type: WS_CONNECT, username, roomname };
 };
 export const sendData = (room, data) => {
   return { type: WS_SEND_DATA, room, data}

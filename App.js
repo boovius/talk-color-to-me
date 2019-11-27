@@ -4,14 +4,14 @@ import configureStore from "./src/state/store";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import SimpleLogin from "./src/components/simple-login";
-import UsersList from "./src/components/users-list";
+import RoomsList from "./src/components/rooms-list";
 import MyRoom from './src/components/my-room';
 import Room from './src/components/room';
 
 const AppNavigator = createStackNavigator(
   {
     SimpleLogin,
-    UsersList,
+    RoomsList,
     MyRoom,
     Room
   },

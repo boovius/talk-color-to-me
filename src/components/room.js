@@ -4,26 +4,25 @@ import { StyleSheet, Text, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { wsConnect, sendData } from '../state/actions/websocket';
 
-const Room = ({ownerData, username, room}) => {
+const Room = ({messages, username, roomname}) => {
   const dispatch = useDispatch();
   const [yourText, setYourText] = useState('');
 
   const sendYourText = (text) => {
     setYourText(text);
-    dispatch(sendData(room, text));
+    dispatch(sendData(roomname, text));
   }
 
   useEffect(() => {
-    dispatch(wsConnect(room, username));
+    console.log('username when connecting in component: ', username);
+    console.log('roomname when connecting in component: ', roomname);
+    dispatch(wsConnect(username, roomname));
   });
 
   return (
-    <View id="app" style={styles.container}>
-      <Text>You are in {room}'s room</Text>
-      <View>
-        <Text>{room}'s text</Text>
-        <Text>{ownerData}</Text>
-      </View>
+    <View id="chat-room" style={styles.container}>
+      <Text>You are in {roomname}'s room</Text>
+      {messages}
       <View>
         <Text>your text</Text>
         <TextInput
@@ -82,9 +81,9 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    username: state.authReducer.user.name,
-    ownerData: state.roomReducer.ownerData,
-    room: state.roomReducer.room,
+    username: state.authReducer.user.username,
+    messages: state.roomReducer.messages,
+    roomname: state.roomReducer.room || state.authReducer.user.username,
   }
 }
 
